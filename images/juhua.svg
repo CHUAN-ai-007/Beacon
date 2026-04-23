@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- 手绘菊花 -->
+  <style>
+    .petal { fill: #FFD700; stroke: #DAA520; stroke-width: 1.5; }
+    .center { fill: #FF8C00; stroke: #D2691E; stroke-width: 1.5; }
+    .stem { stroke: #228B22; stroke-width: 3; fill: none; }
+    .leaf { fill: #32CD32; stroke: #228B22; stroke-width: 1.5; }
+  </style>
+
+  <!-- 茎 -->
+  <path class="stem" d="M100,160 Q105,140 100,120 Q98,100 100,85"/>
+
+  <!-- 叶子 -->
+  <path class="leaf" d="M100,130 Q70,125 65,135 Q75,145 100,135"/>
+  <path class="leaf" d="M100,145 Q130,140 135,150 Q125,160 100,150"/>
+
+  <!-- 花瓣层1 - 外层 -->
+  <ellipse class="petal" cx="100" cy="55" rx="8" ry="20" transform="rotate(0,100,85)"/>
+  <ellipse class="petal" cx="100" cy="55" rx="8" ry="20" transform="rotate(30,100,85)"/>
+  <ellipse class="petal" cx="100" cy="55" rx="8" ry="20" transform="rotate(60,100,85)"/>
+  <ellipse class="petal" cx="100" cy="55" rx="8" ry="20" transform="rotate(90,100,85)"/>
+  <ellipse class="petal" cx="100" cy="55" rx="8" ry="20" transform="rotate(120,100,85)"/>
+  <ellipse class="petal" cx="100" cy="55" rx="8" ry="20" transform="rotate(150,100,85)"/>
+  <ellipse class="petal" cx="100" cy="55" rx="8" ry="20" transform="rotate(180,100,85)"/>
+  <ellipse class="petal" cx="100" cy="55" rx="8" ry="20" transform="rotate(210,100,85)"/>
+  <ellipse class="petal" cx="100" cy="55" rx="8" ry="20" transform="rotate(240,100,85)"/>
+  <ellipse class="petal" cx="100" cy="55" rx="8" ry="20" transform="rotate(270,100,85)"/>
+  <ellipse class="petal" cx="100" cy="55" rx="8" ry="20" transform="rotate(300,100,85)"/>
+  <ellipse class="petal" cx="100" cy="55" rx="8" ry="20" transform="rotate(330,100,85)"/>
+
+  <!-- 花瓣层2 - 内层 -->
+  <ellipse class="petal" cx="100" cy="68" rx="5" ry="12" fill="#FFA500" stroke="#FF8C00" stroke-width="1.5" transform="rotate(15,100,85)"/>
+  <ellipse class="petal" cx="100" cy="68" rx="5" ry="12" fill="#FFA500" stroke="#FF8C00" stroke-width="1.5" transform="rotate(45,100,85)"/>
+  <ellipse class="petal" cx="100" cy="68" rx="5" ry="12" fill="#FFA500" stroke="#FF8C00" stroke-width="1.5" transform="rotate(75,100,85)"/>
+  <ellipse class="petal" cx="100" cy="68" rx="5" ry="12" fill="#FFA500" stroke="#FF8C00" stroke-width="1.5" transform="rotate(105,100,85)"/>
+  <ellipse class="petal" cx="100" cy="68" rx="5" ry="12" fill="#FFA500" stroke="#FF8C00" stroke-width="1.5" transform="rotate(135,100,85)"/>
+  <ellipse class="petal" cx="100" cy="68" rx="5" ry="12" fill="#FFA500" stroke="#FF8C00" stroke-width="1.5" transform="rotate(165,100,85)"/>
+  <ellipse class="petal" cx="100" cy="68" rx="5" ry="12" fill="#FFA500" stroke="#FF8C00" stroke-width="1.5" transform="rotate(195,100,85)"/>
+  <ellipse class="petal" cx="100" cy="68" rx="5" ry="12" fill="#FFA500" stroke="#FF8C00" stroke-width="1.5" transform="rotate(225,100,85)"/>
+  <ellipse class="petal" cx="100" cy="68" rx="5" ry="12" fill="#FFA500" stroke="#FF8C00" stroke-width="1.5" transform="rotate(255,100,85)"/>
+  <ellipse class="petal" cx="100" cy="68" rx="5" ry="12" fill="#FFA500" stroke="#FF8C00" stroke-width="1.5" transform="rotate(285,100,85)"/>
+  <ellipse class="petal" cx="100" cy="68" rx="5" ry="12" fill="#FFA500" stroke="#FF8C00" stroke-width="1.5" transform="rotate(315,100,85)"/>
+  <ellipse class="petal" cx="100" cy="68" rx="5" ry="12" fill="#FFA500" stroke="#FF8C00" stroke-width="1.5" transform="rotate(345,100,85)"/>
+
+  <!-- 花心 -->
+  <circle class="center" cx="100" cy="85" r="12"/>
+</svg>

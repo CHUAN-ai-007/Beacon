@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- 手绘生姜 -->
+  <style>
+    .ginger { fill: #F0E68C; stroke: #DAA520; stroke-width: 2; }
+    .skin { stroke: #B8860B; stroke-width: 1; fill: none; opacity: 0.5; }
+    .knob { fill: #EEDD82; stroke: #DAA520; stroke-width: 1.5; }
+  </style>
+
+  <!-- 生姜主体 -->
+  <path class="ginger" d="M70,150 Q60,130 65,110 Q68,95 75,85 Q80,75 90,72 Q100,70 110,72 Q120,75 128,85 Q135,95 138,110 Q143,130 135,150 Q130,165 115,170 Q100,175 90,170 Q75,165 70,150"/>
+
+  <!-- 姜芽（凸起部分） -->
+  <ellipse class="knob" cx="85" cy="95" rx="12" ry="15"/>
+  <ellipse class="knob" cx="120" cy="105" rx="10" ry="12"/>
+  <ellipse class="knob" cx="95" cy="130" rx="11" ry="14"/>
+  <ellipse class="knob" cx="115" cy="140" rx="9" ry="11"/>
+
+  <!-- 表皮纹理 -->
+  <path class="skin" d="M75,100 Q85,95 95,100"/>
+  <path class="skin" d="M105,85 Q115,80 125,85"/>
+  <path class="skin" d="M130,110 Q138,105 140,115"/>
+  <path class="skin" d="M80,125 Q88,120 96,125"/>
+  <path class="skin" d="M110,125 Q120,120 130,125"/>
+  <path class="skin" d="M90,150 Q100,145 110,150"/>
+  <path class="skin" d="M120,155 Q128,150 132,155"/>
+
+  <!-- 切片示意（旁边放一片切好的） -->
+  <ellipse class="ginger" cx="150" cy="100" rx="15" ry="20" transform="rotate(30,150,100)"/>
+  <ellipse cx="150" cy="100" rx="8" ry="12" fill="#FFE4B5" transform="rotate(30,150,100)"/>
+</svg>

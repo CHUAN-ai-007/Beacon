@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- 手绘人参 -->
+  <style>
+    .root { fill: #F5DEB3; stroke: #8B7355; stroke-width: 2; }
+    .root-line { stroke: #8B7355; stroke-width: 1; fill: none; opacity: 0.6; }
+    .root-hair { stroke: #D2691E; stroke-width: 1; fill: none; }
+    .head { fill: #E6D5AC; stroke: #8B7355; stroke-width: 2; }
+  </style>
+
+  <!-- 主根 -->
+  <path class="root" d="M85,160 Q80,140 85,120 Q88,100 85,80 Q82,60 90,45 Q95,35 100,35 Q105,35 110,45 Q118,60 115,80 Q112,100 115,120 Q120,140 115,160 Q110,175 100,175 Q90,175 85,160"/>
+
+  <!-- 芦头 -->
+  <ellipse class="head" cx="100" cy="38" rx="12" ry="8"/>
+
+  <!-- 人参的须根 -->
+  <path class="root-hair" d="M85,160 Q75,170 70,180"/>
+  <path class="root-hair" d="M88,165 Q85,178 82,185"/>
+  <path class="root-hair" d="M112,165 Q115,178 118,185"/>
+  <path class="root-hair" d="M115,160 Q125,170 130,180"/>
+
+  <path class="root-hair" d="M85,120 Q70,130 65,140"/>
+  <path class="root-hair" d="M115,120 Q130,130 135,140"/>
+
+  <path class="root-hair" d="M87,90 Q75,100 70,110"/>
+  <path class="root-hair" d="M113,90 Q125,100 130,110"/>
+
+  <!-- 主根上的纹理 -->
+  <path class="root-line" d="M90,60 Q100,58 110,60"/>
+  <path class="root-line" d="M88,80 Q100,78 112,80"/>
+  <path class="root-line" d="M87,100 Q100,98 113,100"/>
+  <path class="root-line" d="M88,120 Q100,118 112,120"/>
+  <path class="root-line" d="M90,140 Q100,138 110,140"/>
+
+  <!-- 芦碗 -->
+  <ellipse cx="100" cy="42" rx="8" ry="3" fill="#D2691E" opacity="0.4"/>
+  <ellipse cx="100" cy="46" rx="7" ry="2.5" fill="#D2691E" opacity="0.4"/>
+</svg>

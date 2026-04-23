@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- 手绘黄芪 -->
+  <style>
+    .root { fill: #F5F5DC; stroke: #D2B48C; stroke-width: 2; }
+    .texture { stroke: #D2B48C; stroke-width: 1; fill: none; opacity: 0.6; }
+    .fiber { stroke: #DEB887; stroke-width: 1; fill: none; }
+  </style>
+
+  <!-- 主根 -->
+  <path class="root" d="M85,170 Q80,150 83,130 Q85,110 83,90 Q81,70 88,55 Q92,45 100,45 Q108,45 112,55 Q119,70 117,90 Q115,110 117,130 Q120,150 115,170 Q112,180 100,180 Q88,180 85,170"/>
+
+  <!-- 分枝 -->
+  <path class="root" d="M85,100 Q65,95 55,105"/>
+  <path class="root" d="M115,100 Q135,95 145,105"/>
+  <path class="root" d="M88,70 Q70,65 62,72"/>
+  <path class="root" d="M112,70 Q130,65 138,72"/>
+
+  <!-- 菊花心纹理（黄芪特征） -->
+  <path class="texture" d="M90,60 Q100,65 110,60"/>
+  <path class="texture" d="M88,80 Q100,85 112,80"/>
+  <path class="texture" d="M87,100 Q100,105 113,100"/>
+  <path class="texture" d="M88,120 Q100,125 112,120"/>
+  <path class="texture" d="M90,140 Q100,145 110,140"/>
+  <path class="texture" d="M92,160 Q100,163 108,160"/>
+
+  <!-- 纵向纤维 -->
+  <path class="fiber" d="M95,55 Q93,100 95,170"/>
+  <path class="fiber" d="M100,55 Q100,100 100,170"/>
+  <path class="fiber" d="M105,55 Q107,100 105,170"/>
+</svg>

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- 手绘甘草 -->
+  <style>
+    .root { fill: #F5DEB3; stroke: #D2B48C; stroke-width: 2; }
+    .texture { stroke: #DEB887; stroke-width: 1; fill: none; opacity: 0.6; }
+    .fiber { stroke: #D2B48C; stroke-width: 1; fill: none; }
+    .slice { fill: #FFF8DC; stroke: #D2B48C; stroke-width: 1.5; }
+  </style>
+
+  <!-- 主根 -->
+  <path class="root" d="M90,170 Q85,150 88,130 Q90,110 88,90 Q86,70 92,55 Q95,48 100,48 Q105,48 108,55 Q114,70 112,90 Q110,110 112,130 Q115,150 110,170 Q107,180 100,180 Q93,180 90,170"/>
+
+  <!-- 分枝 -->
+  <path class="root" d="M88,100 Q70,95 60,105 Q55,110 58,120"/>
+  <path class="root" d="M112,100 Q130,95 140,105 Q145,110 142,120"/>
+  <path class="root" d="M90,70 Q72,65 65,72 Q60,75 62,82"/>
+  <path class="root" d="M110,70 Q128,65 135,72 Q140,75 138,82"/>
+
+  <!-- 纵向纹理 -->
+  <path class="texture" d="M92,60 Q95,100 92,165"/>
+  <path class="texture" d="M100,55 Q100,100 100,170"/>
+  <path class="texture" d="M108,60 Q105,100 108,165"/>
+
+  <!-- 横向环纹 -->
+  <path class="fiber" d="M88,75 Q100,78 112,75"/>
+  <path class="fiber" d="M87,95 Q100,98 113,95"/>
+  <path class="fiber" d="M88,115 Q100,118 112,115"/>
+  <path class="fiber" d="M90,135 Q100,138 110,135"/>
+  <path class="fiber" d="M92,155 Q100,158 108,155"/>
+
+  <!-- 切片示意 -->
+  <ellipse class="slice" cx="150" cy="100" rx="18" ry="12"/>
+  <circle cx="145" cy="100" r="2" fill="#D2B48C"/>
+  <circle cx="155" cy="100" r="2" fill="#D2B48C"/>
+  <circle cx="150" cy="95" r="2" fill="#D2B48C"/>
+  <circle cx="150" cy="105" r="2" fill="#D2B48C"/>
+</svg>

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- 手绘当归 -->
+  <style>
+    .root { fill: #D2B48C; stroke: #8B7355; stroke-width: 2; }
+    .root-detail { stroke: #8B7355; stroke-width: 1; fill: none; opacity: 0.5; }
+    .oil-spot { fill: #8B4513; opacity: 0.4; }
+    .hair { stroke: #D2691E; stroke-width: 1; fill: none; }
+  </style>
+
+  <!-- 主根 -->
+  <path class="root" d="M90,170 Q85,150 88,130 Q90,110 88,90 Q86,70 92,55 Q95,45 100,45 Q105,45 108,55 Q114,70 112,90 Q110,110 112,130 Q115,150 110,170 Q108,180 100,180 Q92,180 90,170"/>
+
+  <!-- 分支 -->
+  <path class="root" d="M90,100 Q70,95 60,105 Q55,110 58,115"/>
+  <path class="root" d="M110,100 Q130,95 140,105 Q145,110 142,115"/>
+  <path class="root" d="M92,70 Q75,65 68,72"/>
+  <path class="root" d="M108,70 Q125,65 132,72"/>
+
+  <!-- 须根 -->
+  <path class="hair" d="M90,170 Q80,180 75,185"/>
+  <path class="hair" d="M95,175 Q92,185 90,190"/>
+  <path class="hair" d="M105,175 Q108,185 110,190"/>
+  <path class="hair" d="M110,170 Q120,180 125,185"/>
+
+  <!-- 纹理 -->
+  <path class="root-detail" d="M92,60 Q100,58 108,60"/>
+  <path class="root-detail" d="M90,80 Q100,78 110,80"/>
+  <path class="root-detail" d="M88,100 Q100,98 112,100"/>
+  <path class="root-detail" d="M90,120 Q100,118 110,120"/>
+  <path class="root-detail" d="M92,140 Q100,138 108,140"/>
+  <path class="root-detail" d="M94,160 Q100,158 106,160"/>
+
+  <!-- 棕色油点（当归特征） -->
+  <ellipse class="oil-spot" cx="95" cy="75" rx="3" ry="2"/>
+  <ellipse class="oil-spot" cx="108" cy="90" rx="2.5" ry="1.5"/>
+  <ellipse class="oil-spot" cx="98" cy="110" rx="3" ry="2"/>
+  <ellipse class="oil-spot" cx="105" cy="130" rx="2.5" ry="1.5"/>
+  <ellipse class="oil-spot" cx="100" cy="150" rx="3" ry="2"/>
+</svg>

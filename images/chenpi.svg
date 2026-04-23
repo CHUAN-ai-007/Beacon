@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- 手绘陈皮 -->
+  <style>
+    .peel { fill: #D2691E; stroke: #8B4513; stroke-width: 2; }
+    .texture { stroke: #8B4513; stroke-width: 1; fill: none; opacity: 0.5; }
+    .highlight { fill: #F4A460; opacity: 0.3; }
+  </style>
+
+  <!-- 陈皮主体 - 卷曲的橘子皮 -->
+  <path class="peel" d="M60,100 Q50,80 70,60 Q90,40 120,45 Q150,50 160,80 Q165,100 155,130 Q145,160 120,165 Q95,170 70,150 Q55,135 60,100"/>
+
+  <!-- 卷曲的内侧 -->
+  <path class="peel" d="M80,100 Q75,90 85,80 Q95,70 110,72 Q125,75 130,85 Q132,95 128,105 Q124,115 112,118 Q100,120 90,115 Q82,110 80,100" fill="#CD853F"/>
+
+  <!-- 纹理线条 -->
+  <path class="texture" d="M70,70 Q90,65 110,70"/>
+  <path class="texture" d="M65,90 Q85,85 105,90"/>
+  <path class="texture" d="M68,110 Q88,105 108,110"/>
+  <path class="texture" d="M75,130 Q95,125 115,130"/>
+  <path class="texture" d="M90,140 Q110,135 130,140"/>
+
+  <!-- 橘皮的油点 -->
+  <circle cx="85" cy="85" r="2" fill="#8B4513" opacity="0.6"/>
+  <circle cx="120" cy="95" r="1.5" fill="#8B4513" opacity="0.6"/>
+  <circle cx="100" cy="120" r="2" fill="#8B4513" opacity="0.6"/>
+  <circle cx="135" cy="110" r="1.5" fill="#8B4513" opacity="0.6"/>
+  <circle cx="95" cy="75" r="1.5" fill="#8B4513" opacity="0.6"/>
+  <circle cx="110" cy="135" r="2" fill="#8B4513" opacity="0.6"/>
+
+  <!-- 高光 -->
+  <ellipse class="highlight" cx="90" cy="80" rx="15" ry="8"/>
+</svg>

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- 手绘枸杞 -->
+  <style>
+    .hand-drawn { stroke: #8B4513; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    .berry { fill: #DC143C; stroke: #8B0000; stroke-width: 1.5; }
+    .leaf { fill: #228B22; stroke: #006400; stroke-width: 1.5; }
+    .stem { stroke: #8B4513; stroke-width: 2.5; fill: none; }
+  </style>
+
+  <!-- 枝条 -->
+  <path class="stem" d="M100,160 Q95,140 100,120 Q105,100 100,80"/>
+
+  <!-- 叶子 -->
+  <path class="leaf" d="M100,80 Q80,70 75,85 Q80,95 100,85 Q120,95 125,85 Q120,70 100,80"/>
+  <path class="leaf" d="M100,100 Q70,90 65,105 Q70,120 100,105 Q130,120 135,105 Q130,90 100,100"/>
+
+  <!-- 枸杞果实 -->
+  <ellipse class="berry" cx="85" cy="130" rx="12" ry="15"/>
+  <ellipse class="berry" cx="115" cy="135" rx="11" ry="14"/>
+  <ellipse class="berry" cx="95" cy="150" rx="13" ry="16"/>
+  <ellipse class="berry" cx="105" cy="125" rx="10" ry="13"/>
+
+  <!-- 手绘风格的杂点 -->
+  <circle cx="82" cy="128" r="1" fill="#8B0000"/>
+  <circle cx="118" cy="138" r="1" fill="#8B0000"/>
+  <circle cx="98" cy="155" r="1.5" fill="#8B0000"/>
+</svg>

@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- 手绘山楂 -->
+  <style>
+    .fruit { fill: #DC143C; stroke: #8B0000; stroke-width: 2; }
+    .highlight { fill: #FF6B6B; opacity: 0.5; }
+    .dot { fill: #8B0000; opacity: 0.3; }
+    .calyx { fill: #228B22; stroke: #006400; stroke-width: 1.5; }
+    .stem { stroke: #654321; stroke-width: 2.5; fill: none; }
+  </style>
+
+  <!-- 山楂1 -->
+  <circle class="fruit" cx="75" cy="85" r="28"/>
+  <circle class="highlight" cx="65" cy="75" r="8"/>
+  <circle class="dot" cx="70" cy="85" r="1.5"/>
+  <circle class="dot" cx="80" cy="90" r="1.5"/>
+  <circle class="dot" cx="85" cy="80" r="1.5"/>
+  <circle class="dot" cx="75" cy="95" r="1.5"/>
+
+  <!-- 花萼 -->
+  <path class="calyx" d="M68,62 L72,58 L75,62 L78,58 L82,62"/>
+  <path class="stem" d="M75,60 L75,52"/>
+
+  <!-- 山楂2 -->
+  <circle class="fruit" cx="130" cy="95" r="30"/>
+  <circle class="highlight" cx="120" cy="85" r="9"/>
+  <circle class="dot" cx="125" cy="95" r="1.5"/>
+  <circle class="dot" cx="135" cy="100" r="1.5"/>
+  <circle class="dot" cx="140" cy="90" r="1.5"/>
+  <circle class="dot" cx="130" cy="105" r="1.5"/>
+  <circle class="dot" cx="120" cy="100" r="1.5"/>
+
+  <!-- 花萼 -->
+  <path class="calyx" d="M122,70 L126,66 L130,70 L134,66 L138,70"/>
+  <path class="stem" d="M130,68 L132,60"/>
+
+  <!-- 山楂3 -->
+  <circle class="fruit" cx="95" cy="140" r="25"/>
+  <circle class="highlight" cx="87" cy="132" r="7"/>
+  <circle class="dot" cx="92" cy="140" r="1.5"/>
+  <circle class="dot" cx="102" cy="145" r="1.5"/>
+  <circle class="dot" cx="98" cy="135" r="1.5"/>
+
+  <!-- 花萼 -->
+  <path class="calyx" d="M88,118 L92,114 L95,118 L98,114 L102,118"/>
+  <path class="stem" d="M95,116 L95,108"/>
+</svg>

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- 手绘红枣 -->
+  <style>
+    .fruit { fill: #DC143C; stroke: #8B0000; stroke-width: 2; }
+    .highlight { fill: #FF6B6B; opacity: 0.4; }
+    .wrinkle { stroke: #8B0000; stroke-width: 1; fill: none; opacity: 0.3; }
+    .stem { stroke: #654321; stroke-width: 3; fill: none; }
+  </style>
+
+  <!-- 红枣1 -->
+  <ellipse class="fruit" cx="70" cy="100" rx="25" ry="35"/>
+  <ellipse class="highlight" cx="62" cy="85" rx="8" ry="12"/>
+  <path class="wrinkle" d="M55,90 Q65,95 75,90"/>
+  <path class="wrinkle" d="M52,105 Q65,110 78,105"/>
+  <path class="wrinkle" d="M55,120 Q65,125 75,120"/>
+  <path class="stem" d="M68,68 Q70,60 72,55"/>
+
+  <!-- 红枣2 -->
+  <ellipse class="fruit" cx="130" cy="110" rx="28" ry="38"/>
+  <ellipse class="highlight" cx="122" cy="95" rx="9" ry="13"/>
+  <path class="wrinkle" d="M115,100 Q128,105 141,100"/>
+  <path class="wrinkle" d="M112,115 Q128,120 144,115"/>
+  <path class="wrinkle" d="M115,130 Q128,135 141,130"/>
+  <path class="stem" d="M128,75 Q130,68 132,62"/>
+
+  <!-- 红枣3（小一点） -->
+  <ellipse class="fruit" cx="100" cy="155" rx="22" ry="30"/>
+  <ellipse class="highlight" cx="93" cy="142" rx="7" ry="10"/>
+  <path class="stem" d="M98,127 Q100,122 102,118"/>
+</svg>
