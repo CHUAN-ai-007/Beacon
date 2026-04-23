@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>百草小郎中 - 识图辨药</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .game-container {
+            background: #fffef8;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 500px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        /* 头部 */
+        .header {
+            background: linear-gradient(135deg, #8B4513 0%, #D2691E 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .header .subtitle {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        /* 进度条 */
+        .progress-bar {
+            height: 6px;
+            background: #e0e0e0;
+            margin: 0 20px;
+            border-radius: 3px;
+            overflow: hidden;
+            margin-top: 15px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #4CAF50;
+            transition: width 0.3s ease;
+        }
+
+        .game-info {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 20px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* 主游戏区域 */
+        .game-area {
+            padding: 20px;
+        }
+
+        /* 题目区域 */
+        .question-area {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .medicine-display {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 20px;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .medicine-emoji {
+            font-size: 80px;
+            margin-bottom: 15px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .medicine-desc {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.6;
+            max-width: 300px;
+        }
+
+        .question-text {
+            font-size: 18px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        /* 选项区域 */
+        .options-area {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .option-btn {
+            padding: 15px 10px;
+            border: 2px solid #ddd;
+            border-radius: 12px;
+            background: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .option-btn:hover:not(.disabled) {
+            border-color: #8B4513;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(139, 69, 19, 0.2);
+        }
+
+        .option-btn.correct {
+            background: #4CAF50;
+            border-color: #4CAF50;
+            color: white;
+            animation: correctPulse 0.5s ease;
+        }
+
+        .option-btn.wrong {
+            background: #f44336;
+            border-color: #f44336;
+            color: white;
+            animation: shake 0.5s ease;
+        }
+
+        .option-btn.disabled {
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        @keyframes correctPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        /* 反馈信息 */
+        .feedback {
+            text-align: center;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 10px;
+            font-size: 14px;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .feedback.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .feedback.correct {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .feedback.wrong {
+            background: #ffebee;
+            color: #c62828;
+        }
+
+        /* 页面切换 */
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* 开始页面 */
+        .start-page {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .start-page .logo {
+            font-size: 100px;
+            margin-bottom: 20px;
+        }
+
+        .start-page h2 {
+            font-size: 28px;
+            color: #8B4513;
+            margin-bottom: 10px;
+        }
+
+        .start-page p {
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #8B4513 0%, #D2691E 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 18px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(139, 69, 19, 0.3);
+        }
+
+        /* 结束页面 */
+        .end-page {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .score-display {
+            font-size: 72px;
+            font-weight: bold;
+            color: #8B4513;
+            margin: 20px 0;
+        }
+
+        .score-label {
+            color: #666;
+            font-size: 16px;
+        }
+
+        .result-message {
+            font-size: 20px;
+            color: #333;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+
+        .medicine-unlocked {
+            background: #f5f5f5;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        .medicine-unlocked h3 {
+            font-size: 16px;
+            color: #8B4513;
+            margin-bottom: 10px;
+        }
+
+        .unlocked-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .unlocked-item {
+            background: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 14px;
+            border: 1px solid #ddd;
+        }
+
+        /* 动画 */
+        .fade-in {
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <!-- 头部 -->
+        <div class="header">
+            <h1>🌿 百草小郎中</h1>
+            <div class="subtitle">识图辨药 - v1.0.0</div>
+        </div>
+
+        <!-- 开始页面 -->
+        <div class="page start-page active" id="startPage">
+            <div class="logo">🏪</div>
+            <h2>欢迎回春堂</h2>
+            <p>
+                你继承了爷爷的药铺<br>
+                需要通过学习中药知识<br>
+                成为一代名医！
+            </p>
+            <button class="btn-primary" onclick="startGame()">开始学艺</button>
+        </div>
+
+        <!-- 游戏页面 -->
+        <div class="page game-page" id="gamePage">
+            <div class="game-info">
+                <span>第 <strong id="currentLevel">1</strong> / 5 关</span>
+                <span>得分: <strong id="score">0</strong></span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+            </div>
+
+            <div class="game-area">
+                <div class="question-area">
+                    <div class="medicine-display">
+                        <div class="medicine-emoji" id="medicineEmoji">🌿</div>
+                        <div class="medicine-desc" id="medicineDesc">药材描述</div>
+                    </div>
+                    <div class="question-text">这是哪味中药？</div>
+                </div>
+
+                <div class="options-area" id="optionsArea">
+                    <!-- 选项按钮由 JS 生成 -->
+                </div>
+
+                <div class="feedback" id="feedback"></div>
+            </div>
+        </div>
+
+        <!-- 结束页面 -->
+        <div class="page end-page" id="endPage">
+            <div class="fade-in">
+                <div class="score-label">最终得分</div>
+                <div class="score-display" id="finalScore">0</div>
+                <div class="result-message" id="resultMessage">继续加油！</div>
+
+                <div class="medicine-unlocked">
+                    <h3>📚 本次解锁药材</h3>
+                    <div class="unlocked-list" id="unlockedList"></div>
+                </div>
+
+                <button class="btn-primary" onclick="restartGame()">再玩一次</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 药材数据库
+        const medicineDatabase = [
+            {
+                id: 1,
+                name: "枸杞",
+                emoji: "🔴",
+                desc: "鲜红的果实，像小珠子一样晶莹剔透，味道甘甜。宁夏的枸杞最为出名。",
+                aliases: ["枸杞子", "红耳坠"],
+                effects: "滋补肝肾，益精明目"
+            },
+            {
+                id: 2,
+                name: "菊花",
+                emoji: "🌼",
+                desc: "金黄色的花朵，泡在水里会慢慢绽放，有淡淡的清香。杭白菊和贡菊很有名。",
+                aliases: ["杭菊", "贡菊"],
+                effects: "散风清热，平肝明目"
+            },
+            {
+                id: 3,
+                name: "陈皮",
+                emoji: "🍊",
+                desc: "橘子皮晒干后的样子，表面皱皱的，闻起来有清新的柑橘香味。越陈越香。",
+                aliases: ["橘皮", "广陈皮"],
+                effects: "理气健脾，燥湿化痰"
+            },
+            {
+                id: 4,
+                name: "人参",
+                emoji: "🥔",
+                desc: "形状像个小人，有头有脚有须根。野生的非常珍贵，被誉为'百草之王'。",
+                aliases: ["高丽参", "西洋参", "党参"],
+                effects: "大补元气，复脉固脱"
+            },
+            {
+                id: 5,
+                name: "当归",
+                emoji: "⚪",
+                desc: "黄褐色的根，切开后断面有棕色油点，香气浓郁。妇科圣药。",
+                aliases: ["秦归", "云归"],
+                effects: "补血活血，调经止痛"
+            },
+            {
+                id: 6,
+                name: "黄芪",
+                emoji: "🪵",
+                desc: "长长的根，表面黄白色，质地绵软。切片后有明显的菊花心纹理。",
+                aliases: ["黄耆", "绵芪"],
+                effects: "补气升阳，固表止汗"
+            },
+            {
+                id: 7,
+                name: "红枣",
+                emoji: "🔴",
+                desc: "红色的干果，椭圆形，肉质肥厚，味道很甜。'一日三枣，长生不老'。",
+                aliases: ["大枣", "干枣"],
+                effects: "补中益气，养血安神"
+            },
+            {
+                id: 8,
+                name: "生姜",
+                emoji: "🟡",
+                desc: "黄色的根茎，形状不规则，切开后有辛辣的芳香。'冬吃萝卜夏吃姜'。",
+                aliases: ["姜", "干姜"],
+                effects: "解表散寒，温中止呕"
+            },
+            {
+                id: 9,
+                name: "山楂",
+                emoji: "🔴",
+                desc: "红色的小果子，圆圆的，味道酸甜。糖葫芦就是用山楂做的。",
+                aliases: ["山里红", "红果"],
+                effects: "消食健胃，行气散瘀"
+            },
+            {
+                id: 10,
+                name: "甘草",
+                emoji: "🟤",
+                desc: "黄色的根和根茎，味道非常甜。被称为'国老'，能调和诸药。",
+                aliases: ["生甘草", "炙甘草"],
+                effects: "补脾益气，清热解毒"
+            }
+        ];
+
+        // 游戏状态
+        let gameState = {
+            currentLevel: 1,
+            score: 0,
+            totalLevels: 5,
+            questions: [],
+            unlockedMedicines: []
+        };
+
+        // 初始化游戏
+        function initGame() {
+            // 随机选择5道题
+            const shuffled = [...medicineDatabase].sort(() => Math.random() - 0.5);
+            gameState.questions = shuffled.slice(0, gameState.totalLevels);
+            gameState.currentLevel = 1;
+            gameState.score = 0;
+            gameState.unlockedMedicines = [];
+        }
+
+        // 开始游戏
+        function startGame() {
+            initGame();
+            showPage('gamePage');
+            loadQuestion();
+        }
+
+        // 显示页面
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById(pageId).classList.add('active');
+        }
+
+        // 加载题目
+        function loadQuestion() {
+            const question = gameState.questions[gameState.currentLevel - 1];
+
+            // 更新UI
+            document.getElementById('currentLevel').textContent = gameState.currentLevel;
+            document.getElementById('score').textContent = gameState.score;
+            document.getElementById('progressFill').style.width =
+                ((gameState.currentLevel - 1) / gameState.totalLevels * 100) + '%';
+
+            // 显示药材
+            document.getElementById('medicineEmoji').textContent = question.emoji;
+            document.getElementById('medicineDesc').textContent = question.desc;
+
+            // 生成选项（1个正确 + 3个干扰项）
+            const options = generateOptions(question);
+            renderOptions(options, question);
+
+            // 隐藏反馈
+            const feedback = document.getElementById('feedback');
+            feedback.classList.remove('show');
+        }
+
+        // 生成选项
+        function generateOptions(correctMedicine) {
+            const options = [correctMedicine];
+            const wrongOptions = medicineDatabase
+                .filter(m => m.id !== correctMedicine.id)
+                .sort(() => Math.random() - 0.5)
+                .slice(0, 3);
+            options.push(...wrongOptions);
+            return options.sort(() => Math.random() - 0.5);
+        }
+
+        // 渲染选项
+        function renderOptions(options, correctMedicine) {
+            const container = document.getElementById('optionsArea');
+            container.innerHTML = '';
+
+            options.forEach(medicine => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn';
+                btn.textContent = medicine.name;
+                btn.onclick = () => checkAnswer(medicine, correctMedicine, btn);
+                container.appendChild(btn);
+            });
+        }
+
+        // 检查答案
+        function checkAnswer(selected, correct, btnElement) {
+            // 禁用所有按钮
+            document.querySelectorAll('.option-btn').forEach(btn => {
+                btn.classList.add('disabled');
+                btn.onclick = null;
+            });
+
+            const feedback = document.getElementById('feedback');
+            const isCorrect = selected.id === correct.id;
+
+            if (isCorrect) {
+                btnElement.classList.add('correct');
+                feedback.className = 'feedback correct';
+                feedback.innerHTML = `
+                    <strong>✓ 答对了！</strong><br>
+                    ${correct.name}：${correct.effects}
+                `;
+                gameState.score += 10;
+
+                // 记录解锁的药材
+                if (!gameState.unlockedMedicines.find(m => m.id === correct.id)) {
+                    gameState.unlockedMedicines.push(correct);
+                }
+            } else {
+                btnElement.classList.add('wrong');
+                // 高亮正确答案
+                document.querySelectorAll('.option-btn').forEach(btn => {
+                    if (btn.textContent === correct.name) {
+                        btn.classList.add('correct');
+                    }
+                });
+                feedback.className = 'feedback wrong';
+                feedback.innerHTML = `
+                    <strong>✗ 答错了</strong><br>
+                    正确答案是「${correct.name}」<br>
+                    ${correct.effects}
+                `;
+            }
+
+            feedback.classList.add('show');
+
+            // 延迟后进入下一题
+            setTimeout(() => {
+                if (gameState.currentLevel < gameState.totalLevels) {
+                    gameState.currentLevel++;
+                    loadQuestion();
+                } else {
+                    endGame();
+                }
+            }, 2000);
+        }
+
+        // 结束游戏
+        function endGame() {
+            document.getElementById('finalScore').textContent = gameState.score;
+
+            // 根据得分显示评价
+            const message = document.getElementById('resultMessage');
+            if (gameState.score >= 50) {
+                message.textContent = '🏆 神医转世！全部答对！';
+            } else if (gameState.score >= 40) {
+                message.textContent = '👏 郎中高手！只差一点点！';
+            } else if (gameState.score >= 30) {
+                message.textContent = '👍 药铺学徒！继续加油！';
+            } else {
+                message.textContent = '📚 还需努力！多读医书！';
+            }
+
+            // 显示解锁的药材
+            const list = document.getElementById('unlockedList');
+            list.innerHTML = gameState.unlockedMedicines
+                .map(m => `<span class="unlocked-item">${m.emoji} ${m.name}</span>`)
+                .join('');
+
+            showPage('endPage');
+        }
+
+        // 重新开始
+        function restartGame() {
+            startGame();
+        }
+    </script>
+</body>
+</html>
